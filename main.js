@@ -1,1 +1,1 @@
-console.log("Hello World!");
+(()=>{"use strict";fetch("https://api.weatherapi.com/v1/current.json?key=c1a9b3173a4b44c68e413037231307&q=auto:ip").then((function(t){return console.log(t.json())})).catch((function(t){return console.log(t)}))})();
