@@ -1,7 +1,7 @@
 // import "./style.css";n
 import { weatherApi } from "./weatherApi.js";
 import { carouselWheel } from "./carousel.js";
-
+import { searchButton } from "./search.js"; 
 
 const screenController = (() => {
     const container = document.getElementById('container');

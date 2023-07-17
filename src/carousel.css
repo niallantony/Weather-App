@@ -1,0 +1,96 @@
+/* reel css */
+:root {
+    --background: white ;
+    --text: black;
+    --nav-current:gray;
+    --hover:blue ;
+}
+.image-carousel {
+    display:flex;
+    align-items: center;
+}
+
+#carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#button-left {
+    left: 0;
+}
+#button-left img {
+    left: -1px;
+}
+#button-right img {
+    right: -2px;
+}
+#button-right {
+    right: 0;
+}
+
+.reel {
+    display: flex;
+    transition: 2s;
+    height: 100%;
+}
+
+.reel-element {
+    background-color: aqua;
+    height: 100%;
+}
+
+.carousel-button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    border: 0;
+    color: var(--hover);
+    position:absolute;
+    padding: 0;
+    margin: 1rem;
+    top:40%;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.5);
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: invert(100%) brightness(103%);
+
+}
+
+.carousel-button img {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.carousel-button:active {
+    filter: brightness(140%);
+}
+
+.carousel-navigation {
+    width:.8rem;
+    height: .8rem;
+    border-radius: 1rem;
+    border: 0;
+    background-color: var(--background);
+    margin: 0 .5rem;
+    box-sizing: border-box;
+    padding: .5rem;
+    border: 1px;
+}
+
+
+.carousel-navigation.current {
+    background-color: var(--nav-current);
+    border: 1px solid var(--background);
+}
+
+.frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+
+}
