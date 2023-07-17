@@ -2,6 +2,11 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
+html,body {
+    margin:0;
+    padding:0;
+}
+
 .page {
     display:flex;
     width: 100%;
@@ -12,6 +17,7 @@
 }
 
 #container {
+    font-size: 1rem;
     position: relative;
     flex: 0 0 auto;
     display:flex;
@@ -23,6 +29,13 @@
     background-color: white;
     box-shadow: 5px 5px 10px #AA6611;
     max-width: 75%;
+    width: clamp(1rem,400px ,40rem);
+    height: max(50%,30rem);
+    justify-content: flex-end;
+    align-items: baseline;
+}
+.condition {
+    color: gray; 
 }
 
 button {
@@ -36,12 +49,9 @@ button {
 }
 
 img {
-    max-width: 100%;
+    width:auto;
 }
 
-button:hover {
-    filter: brightness(110%);
-}
 
 button:active {
     filter: brightness(90%);

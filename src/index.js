@@ -1,36 +1,14 @@
 // import "./style.css";n
+import { weatherApi } from "./weatherApi.js";
+import { carouselWheel } from "./carousel.js";
 
-const weatherApi = (() => {
-    const currentData = {ip:null};
-    console.log("Running..")
-    const  getWeatherAtIP = async () =>  {
-        const apiRequest = await fetch("https://api.weatherapi.com/v1/current.json?key=c1a9b3173a4b44c68e413037231307&q=auto:ip")
-        currentData.ip = await apiRequest.json();
-        console.log('Made :',currentData.ip);
-    }
-
-
-    const getData = (request) => {
-        return new Promise(function(resolve, reject){
-            if(!currentData[request]) {
-                console.log(request);
-                reject(new Error('No such data exists!'))
-            } else {
-                resolve(currentData[request]);
-            }
-        })
-    };
-    return {
-        getWeatherAtIP,
-        getData
-    }
-})();
 
 const screenController = (() => {
     const container = document.getElementById('container');
     const locationDiv = container.querySelector('.location');
     const conditionDiv = container.querySelector('.condition');
     const weatherImage = container.querySelector('img');
+    const carousel = document.getElementById('carousel');
 
     const populatePage = (data) => {
         locationDiv.textContent = data.location.name + ' : ' + data.location.country;
@@ -39,12 +17,13 @@ const screenController = (() => {
     }
 
     const initialLoad = async () => {
-        await weatherApi.getWeatherAtIP()
-        const data = await weatherApi.getData("ip")
+        await weatherApi.getForecastAtIP()
+        const forecast = await weatherApi.getForecast("ip")
         .catch(err => console.log(err));
-        console.log(data);
-        populatePage(data);
+        console.log(forecast);
+        populatePage(forecast);
     }
 
     initialLoad();
+    carouselWheel("carousel",["front","rainfall","pollution"],carousel.offsetWidth)
 })()
