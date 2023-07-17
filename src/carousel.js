@@ -68,13 +68,13 @@ export const carouselWheel = (id,images,w) => {
     
     const navigation = () => {
         const navFrame = document.createElement('div');
-        navFrame.setAttribute('style','position:absolute;left:0;right:0;bottom:.5rem;display:flex;margin: 0 auto;justify-content:center;');
+        navFrame.setAttribute('style','position:absolute;left:0;right:0;bottom:-1rem;display:flex;margin: 0 auto;justify-content:center;');
         for (let i = 0 ; i < images.length ; i++) {
             const newBut = createNavButton(i);
             navFrame.appendChild(newBut);
             newBut.classList.add('carousel-navigation')
         }
-        frame.appendChild(navFrame)
+        carouselElement.appendChild(navFrame)
     }
     
     const createNavButton = (i) => {
@@ -143,5 +143,5 @@ export const carouselWheel = (id,images,w) => {
     initImages(images);
     addButtons();
     navigation();
-    startCycle();
+    // startCycle();
 }
