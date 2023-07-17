@@ -25,5 +25,6 @@ const screenController = (() => {
     }
 
     initialLoad();
+    searchButton('search');
     carouselWheel("carousel",["front","rainfall","pollution"],carousel.offsetWidth)
 })()

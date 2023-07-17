@@ -6,6 +6,7 @@
         <title>Weather App</title>
         <link rel="stylesheet" href="./src/style.css">
         <link rel="stylesheet" href="./src/carousel.css">
+        <link rel="stylesheet" href="./src/search.css">
         <script type="module" src="./src/index.js" defer></script>
     </head>
     <body>
@@ -20,6 +21,12 @@
                     <div class="condition"></div>
                 </div>
             </div>
+            <form id="search">
+                <button type="submit" class="search-button">
+                    <img src="./src/images/search.svg">
+                </button>
+                <input type="text" id="search-bar" hidden>
+            </form>
         </div>
     </body>
     

@@ -9,6 +9,7 @@ html,body {
 
 .page {
     display:flex;
+    flex-direction: column;
     /* width: 100%; */
     justify-content: center;
     align-items: center;
@@ -29,8 +30,8 @@ html,body {
     background-color: white;
     box-shadow: 5px 5px 10px #AA6611;
     /* max-width: 75%; */
-    width: clamp(300px, 400px,40%);
-    height: max(50%,30rem);
+    width: clamp(40%, 400px,80%);
+    height: min(65%,30rem);
     justify-content: flex-end;
     align-items: baseline;
 }
@@ -56,14 +57,4 @@ img {
 button:active {
     filter: brightness(90%);
     transform: scale(98%);
-}
-
-input {
-    font-family: inherit;
-    border: 2px solid #CFCFCF;
-    border-radius: 1rem;
-    font-size: 1rem;
-    padding: 1rem;
-    max-width: 100%;
-    margin-top: 1rem;
 }
