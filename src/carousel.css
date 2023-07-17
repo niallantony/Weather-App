@@ -17,16 +17,19 @@
 }
 
 #button-left {
-    left: 0;
+    left: -2rem;
+    
 }
 #button-left img {
     left: -1px;
+    filter: invert(100%) brightness(103%);
 }
 #button-right img {
+    filter: invert(100%) brightness(103%);
     right: -2px;
 }
 #button-right {
-    right: 0;
+    right: -2rem;
 }
 
 .reel {
@@ -44,7 +47,6 @@
     width: 2rem;
     height: 2rem;
     border-radius: 1rem;
-    border: 0;
     color: var(--hover);
     position:absolute;
     padding: 0;
@@ -54,8 +56,6 @@
     background-color: rgba(0,0,0,0.5);
     background-repeat: no-repeat;
     background-position: center;
-    filter: invert(100%) brightness(103%);
-
 }
 
 .carousel-button img {
@@ -78,7 +78,7 @@
     margin: 0 .5rem;
     box-sizing: border-box;
     padding: .5rem;
-    border: 1px;
+    border: 1px solid gray;
 }
 
 

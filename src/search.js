@@ -6,10 +6,12 @@ export const searchButton = (elementId) => {
     const showBar = () => {
         searchBar.hidden = false;
         searchDiv.classList.add('searchbar-visible');
+        setTimeout(() => searchBar.setAttribute('placeholder','Where are you?'),800);
     }
     
     const hideBar = async () => {
         searchDiv.classList.remove('searchbar-visible');
+        searchBar.removeAttribute('placeholder');
         setTimeout(() => searchBar.hidden = true,500);
     }
 

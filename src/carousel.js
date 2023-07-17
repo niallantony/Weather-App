@@ -34,7 +34,6 @@ export const carouselWheel = (id,images,w) => {
     const addButtons = () => {
         const buttonLeft = document.createElement('button');
         buttonLeft.classList.add('carousel-button');
-        // buttonLeft.textContent = "<";
         const leftImg = document.createElement('img');
         buttonLeft.appendChild(leftImg)
         leftImg.src = './src/images/left.png';
@@ -45,7 +44,6 @@ export const carouselWheel = (id,images,w) => {
         buttonRight.classList.add('carousel-button');
         buttonRight.appendChild(rightImg)
         rightImg.src = './src/images/right.png';
-        // buttonRight.textContent = ">";
         buttonRight.id = "button-right";
         carouselElement.appendChild(buttonRight);
         buttonRight.addEventListener('click',(e) => {
@@ -68,7 +66,7 @@ export const carouselWheel = (id,images,w) => {
     
     const navigation = () => {
         const navFrame = document.createElement('div');
-        navFrame.setAttribute('style','position:absolute;left:0;right:0;bottom:-1rem;display:flex;margin: 0 auto;justify-content:center;');
+        navFrame.setAttribute('style','position:absolute;left:0;right:0;bottom:-2rem;display:flex;margin: 0 auto;justify-content:center;');
         for (let i = 0 ; i < images.length ; i++) {
             const newBut = createNavButton(i);
             navFrame.appendChild(newBut);
@@ -100,7 +98,7 @@ export const carouselWheel = (id,images,w) => {
         console.log('Going to ', imageRef);
         reel.style.left = `${imageRef*width*-1}px`;
         changeNav();
-        pauseCycle();
+        // pauseCycle();
     }
     
     const next = () => {
@@ -143,5 +141,6 @@ export const carouselWheel = (id,images,w) => {
     initImages(images);
     addButtons();
     navigation();
+    goTo(1);
     // startCycle();
 }

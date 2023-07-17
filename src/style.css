@@ -27,9 +27,8 @@ html,body {
     align-items: center;
     padding: 2rem 2rem 3rem;
     border-radius: 1rem;
-    background-color: white;
+    background-color: #FEFEFE;
     box-shadow: 5px 5px 10px #AA6611;
-    /* max-width: 75%; */
     width: clamp(40%, 400px,80%);
     height: min(65%,30rem);
     justify-content: flex-end;
@@ -65,7 +64,7 @@ button:active {
     justify-content: space-around;
     padding: 0 1rem;
     box-sizing: border-box;
-    background-color: transparent;
+    background-color: #FFF;
 }
 
 #front h3 {
@@ -94,6 +93,7 @@ button:active {
     display: flex;
     border-bottom: 1px solid gray;
     padding-bottom: 1rem;
+    align-items: center;
 }
 
 #front .weather-chip:last-of-type {
@@ -121,4 +121,30 @@ p {
 
 .chip-info p {
     flex: 0 0 auto;
+}
+
+#rainfall {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    box-sizing: border-box;
+    overflow:hidden;
+}
+
+.icon-frame {
+    flex: 1;
+    position: relative;
+}
+
+.icon-frame img {
+    position: absolute;
+    height: 100%;
+    filter: invert(80%);
+    left: -50%;
+}
+
+.info-frame {
+    padding: 1rem 1rem 1rem 0;
+    font-size: 1.5rem;
 }
