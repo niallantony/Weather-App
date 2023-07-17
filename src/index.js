@@ -24,7 +24,6 @@ const screenController = (() => {
         const forecast = await weatherApi.getForecast("ip")
         .catch(err => console.log(err));
 
-        console.log(forecast);
         populatePage(forecast);
     }
 
@@ -70,16 +69,58 @@ const screenController = (() => {
         }
     }
 
+    const getAQIcon = (airQuality) => {
+        if (airQuality['us-epa-index'] < 3) {
+            return './src/images/greenwarning.svg';
+        } else if (airQuality['us-epa-index']< 5) {
+            return './src/images/yellowwarning.svg';
+        } else {
+            return '.src/images/redwarning.svg';
+        }
+    }
+
+    const getWarningText = (airQuality) => {
+        switch (airQuality['us-epa-index']) {
+            case 1 : return 'Good';
+            case 2 : return 'Moderate';
+            case 3 : return 'Unhealthy for sensitive group';
+            case 4 : return 'Unhealthy';
+            case 5 : return 'Very Unhealthy';
+            case 6 : return 'Hazardous';
+            default : return ;
+        }
+    }
+
+    const airQualityFrame = () => {
+        const frame = document.getElementById('pollution');
+        const airQuality = currentData.current.air_quality;
+        const infoChip = document.createElement('div');
+        infoChip.classList.add('info-chip');
+        frame.appendChild(infoChip);
+        const icon = document.createElement('img');
+        icon.src = getAQIcon(airQuality);
+        infoChip.appendChild(icon);
+        const warningText = getWarningText(airQuality);
+        const PM10 = Math.ceil(airQuality.pm10);
+        const textFrame = document.createElement('div');
+        textFrame.classList.add('warning-text');
+        textFrame.innerHTML = `<h3> ${warningText} </h3><p> PM10 : ${PM10} (μg/m3) </p>`
+        infoChip.appendChild(textFrame);
+        if (airQuality['us-epa-index'] >= 3 ) {
+            infoChip.classList.add('urgent');
+        } else if (airQuality['us-epa-index'] >= 5) {
+            infoChip.classList.add('super-urgent');
+        }
+    }
+
     const forecastFrame = () => {
         const frame = document.getElementById('front');
         const curTime = getTime(currentData);
         const laterTime = calculateSixHoursLater(curTime);
-        console.log( 'Current time: ' , curTime , 'Later Time: ', laterTime)
         const forecast = constructForecast(curTime,laterTime)
         const tempIcon = './src/images/temp.svg'
         const rainfallIcon = './src/images/rain-small.svg'
         const humidIcon = './src/images/humid.svg'
-        console.table(forecast);
         for (let key in forecast) {
             const weather = forecast[key];
             if (key === 'Day_3') key = "Day after tomorrow";
@@ -111,7 +152,6 @@ const screenController = (() => {
         let rainStart = 0;
         if (todaysWeather.willRain) {
             const hourlyValues = currentData.forecast.forecastday[0].hour;
-            console.table(hourlyValues)
             for (let i = curTime ; i < 24 ; i++) {
                 if (hourlyValues[i].will_it_rain === 1) {
                     rainStart = i;
@@ -138,7 +178,8 @@ const screenController = (() => {
 
     initialLoad()
     .then(forecastFrame)
-    .then(rainFrame);
+    .then(rainFrame)
+    .then(airQualityFrame);
     searchButton('search');
     carouselWheel("carousel",["front","rainfall","pollution"],carousel.offsetWidth);
 })()

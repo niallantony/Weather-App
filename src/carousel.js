@@ -141,6 +141,6 @@ export const carouselWheel = (id,images,w) => {
     initImages(images);
     addButtons();
     navigation();
-    goTo(1);
     // startCycle();
+    goTo(2);
 }

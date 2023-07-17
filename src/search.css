@@ -4,11 +4,12 @@
 
 #search {
     background-color: white;
+    /* background-image: linear-gradient(to bottom right , #dae0f3 , #ffeaf1); */
     border-radius: 3rem;
     height: 5rem;
     width: 5rem;
     margin-top: 3vh;
-    box-shadow: 5px 5px 10px #AA6611;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
     display: flex;
     justify-content:flex-start;
     align-items: center;
@@ -17,7 +18,7 @@
 
 #search.searchbar-visible {
     width: clamp(300px, 400px, 40%);
-    background-color: var(--selected);
+    background-color: #C8D4F9
 }
 
 .search-button {
