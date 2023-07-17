@@ -34,7 +34,7 @@
 
 .reel {
     display: flex;
-    transition: 2s;
+    transition: left 2s;
     height: 100%;
 }
 

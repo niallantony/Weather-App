@@ -141,7 +141,7 @@ p {
     position: absolute;
     height: 100%;
     filter: invert(80%);
-    left: -50%;
+    left: -30%;
 }
 
 .info-frame {
