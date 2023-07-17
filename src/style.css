@@ -9,7 +9,7 @@ html,body {
 
 .page {
     display:flex;
-    width: 100%;
+    /* width: 100%; */
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -24,12 +24,12 @@ html,body {
     gap: 1rem;
     flex-direction: column;
     align-items: center;
-    padding: 3rem 2rem;
+    padding: 2rem 2rem 3rem;
     border-radius: 1rem;
     background-color: white;
     box-shadow: 5px 5px 10px #AA6611;
-    max-width: 75%;
-    width: clamp(1rem,400px ,40rem);
+    /* max-width: 75%; */
+    width: clamp(300px, 400px,40%);
     height: max(50%,30rem);
     justify-content: flex-end;
     align-items: baseline;
