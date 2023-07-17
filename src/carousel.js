@@ -98,7 +98,7 @@ export const carouselWheel = (id,images,w) => {
         console.log('Going to ', imageRef);
         reel.style.left = `${imageRef*width*-1}px`;
         changeNav();
-        // pauseCycle();
+        pauseCycle();
     }
     
     const next = () => {
@@ -129,18 +129,17 @@ export const carouselWheel = (id,images,w) => {
             paused = true;
             console.log('Pausing cycle...')
             clearInterval(cycle);
-            setTimeout(startCycle,5000);
+            setTimeout(startCycle,8000);
         }
     }
     const startCycle = () => {
         paused = false;
-        cycle = setInterval(next,5000);
+        cycle = setInterval(next,8000);
     }
     
     window.onresize = changeWidth;
     initImages(images);
     addButtons();
     navigation();
-    // startCycle();
-    goTo(2);
+    startCycle();
 }

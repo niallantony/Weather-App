@@ -83,7 +83,7 @@ const screenController = (() => {
         switch (airQuality['us-epa-index']) {
             case 1 : return 'Good';
             case 2 : return 'Moderate';
-            case 3 : return 'Unhealthy for sensitive group';
+            case 3 : return 'Unhealthy for sensitive groups';
             case 4 : return 'Unhealthy';
             case 5 : return 'Very Unhealthy';
             case 6 : return 'Hazardous';
