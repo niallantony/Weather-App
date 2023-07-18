@@ -2,6 +2,16 @@
 import { weatherApi } from "./weatherApi.js";
 import { carouselWheel } from "./carousel.js";
 import { searchButton } from "./search.js"; 
+import greenWarning from "./images/greenwarning.svg"
+import humid from "./images/humid.svg"
+import rainSmall from "./images/rain-small.svg"
+import rainy from "./images/rainy.svg"
+import redWarning from "./images/redwarning.svg"
+import temp from "./images/temp.svg"
+import yellowWarning from "./images/yellowwarning.svg"
+import "./style.css";
+
+
 
 export const screenController = (() => {
     const container = document.getElementById('container');
@@ -94,11 +104,11 @@ export const screenController = (() => {
 
     const getAQIcon = (airQuality) => {
         if (airQuality['us-epa-index'] < 3) {
-            return './src/images/greenwarning.svg';
+            return greenWarning;
         } else if (airQuality['us-epa-index']< 5) {
-            return './src/images/yellowwarning.svg';
+            return yellowWarning;
         } else {
-            return '.src/images/redwarning.svg';
+            return redWarning;
         }
     }
 
@@ -141,9 +151,6 @@ export const screenController = (() => {
         const curTime = getTime(currentData);
         const laterTime = calculateSixHoursLater(curTime);
         const forecast = constructForecast(curTime,laterTime)
-        const tempIcon = './src/images/temp.svg'
-        const rainfallIcon = './src/images/rain-small.svg'
-        const humidIcon = './src/images/humid.svg'
         for (let key in forecast) {
             const weather = forecast[key];
             if (key === 'Day_3') key = "Day after tomorrow";
@@ -153,9 +160,9 @@ export const screenController = (() => {
             <div class="chip-info">
                 <h3 class="day">${key}</h3>
                 <p class="chip-cond">${weather.text}</p>
-                <p class="temp"><img src="${tempIcon}">${weather.avgTemp}</p>
-                <p class="humid"><img src="${humidIcon}">${weather.humid}</p>
-                <p class="rainChance"><img src="${rainfallIcon}">${weather.chanceOfRain}</p>
+                <p class="temp"><img src="${temp}">${weather.avgTemp}</p>
+                <p class="humid"><img src="${humid}">${weather.humid}</p>
+                <p class="rainChance"><img src="${rainSmall}">${weather.chanceOfRain}</p>
             </div>`
             frame.appendChild(weatherChip);
         }
@@ -170,25 +177,24 @@ export const screenController = (() => {
         infoFrame.classList.add('info-frame');
         frame.appendChild(iconFrame);
         frame.appendChild(infoFrame);
-        const umbrellaIcon = './src/images/rainy.svg';
-        const warningIcon = './src/images/redwarning.svg';
         const todaysWeather = weatherValuesDay(currentData.forecast.forecastday[0]);
         let rainStart = 0;
         const alerts = currentData.alerts.alert
-        console.log(alerts);
-        if (alerts.length) {
+
+        const appendAlerts = (alerts) => {
+            if (!alerts.length) return;
             const alertText = `${alerts[0].event}`;
             const alertFrame = document.createElement('div');
-            console.log(alertText);
+            const warning = document.createElement('img');
             alertFrame.innerHTML = `<em>${alertText}</em>`
             alertFrame.classList.add('alert');
             frame.appendChild(alertFrame);
-            const warning = document.createElement('img');
-            warning.src = warningIcon;
+            warning.src = redWarning;
             iconFrame.appendChild(warning);
-
         }
-        if (todaysWeather.willRain) {
+
+        const getRainStart = () => {
+            if (!todaysWeather.willRain) return
             const hourlyValues = currentData.forecast.forecastday[0].hour;
             for (let i = curTime ; i < 24 ; i++) {
                 if (hourlyValues[i].will_it_rain === 1) {
@@ -197,22 +203,30 @@ export const screenController = (() => {
                 }
             }
         }
-        if (!rainStart) {
-            infoFrame.textContent = "No forecast rain today.";
+
+        const showRainStart = () => {
+            if (rainStart === curTime) {
+                infoFrame.textContent = "Currently forecast rain.";
+            } else {
+                infoFrame.textContent = `Forecast rain at ${rainStart}:00.`;
+            }
         }
-        if (rainStart) {
+
+        const rainStyling = () => {
             infoFrame.classList.add('raining');
             const umbrella = document.createElement("img");
-            umbrella.src = umbrellaIcon;
+            umbrella.src = rainy;
             iconFrame.appendChild(umbrella);
-        };
-        if (rainStart === curTime && rainStart) {
-            infoFrame.textContent = "Currently forecast rain.";
-        } else if (rainStart) {
-            infoFrame.textContent = `Forecast rain at ${rainStart}:00.`;
         }
-
-
+        
+        getRainStart();
+        if (!rainStart) {
+            infoFrame.textContent = "No forecast rain today.";
+        } else {
+            showRainStart();
+            rainStyling();
+        }
+      appendAlerts(alerts);
     }
 
     initialLoad()

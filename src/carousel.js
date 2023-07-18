@@ -1,4 +1,6 @@
-// import "./carousel.css";
+import "./carousel.css";
+import left from "./images/left.png"
+import right from "./images/right.png"
 
 export const carouselWheel = (id,images,w) => {
     const carouselElement = document.getElementById(id);
@@ -35,14 +37,14 @@ export const carouselWheel = (id,images,w) => {
         buttonLeft.classList.add('carousel-button');
         const leftImg = document.createElement('img');
         buttonLeft.appendChild(leftImg)
-        leftImg.src = './src/images/left.png';
+        leftImg.src = left;
         buttonLeft.id = "button-left";
         carouselElement.insertBefore(buttonLeft,frame);
         const buttonRight = document.createElement('button');
         const rightImg = document.createElement('img');
         buttonRight.classList.add('carousel-button');
         buttonRight.appendChild(rightImg)
-        rightImg.src = './src/images/right.png';
+        rightImg.src = right;
         buttonRight.id = "button-right";
         carouselElement.appendChild(buttonRight);
         buttonRight.addEventListener('click',(e) => {

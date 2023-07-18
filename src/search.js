@@ -1,9 +1,13 @@
+import "./search.css";
+import searchIcon from "./images/search.svg";
 import { weatherApi } from "./weatherApi.js";
 import { screenController } from "./index.js";
 
 export const searchButton = (elementId) => {
     const searchDiv = document.getElementById(elementId);
     const searchButton = searchDiv.querySelector('.search-button');
+    const buttonImage = searchButton.querySelector('img');
+    buttonImage.src = searchIcon;
     const searchBar = searchDiv.querySelector('input')
 
     const showBar = () => {
