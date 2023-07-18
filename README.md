@@ -11,8 +11,6 @@ Part of TheOdinProject as an exercise to practice asynchronous functions, and AP
 <img src="./other/forecast_page.png" alt="forecast page" width="300"/>
 <img src="./other/rain_page.png" alt="rain page" width="300"/>
 <img src="./other/air_quality.png" alt="air quality page" width="300"/>
-![rainfall page](./other/rain_page.png)
-![air quality page](./other/air_quality.png)
 
 ## Personal Objectives
 
