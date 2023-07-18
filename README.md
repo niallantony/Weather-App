@@ -1,8 +1,8 @@
-## 🌧️ Weather-App
+# 🌧️   Weather-App
 A small app to retrieve the weather in a part of the world.
 Includes a three day forecast, rain and weather alerts, and an air quality index tab.
 
-# Live [Weather App](https://github.com/niallantony/Weather-App)
+## Live [Weather App](https://github.com/niallantony/Weather-App)
 
 ---
 
