@@ -142,7 +142,7 @@ p {
 .icon-frame img {
     position: absolute;
     height: 100%;
-    filter: invert(80%);
+    filter: invert(100%);
     left: -30%;
 }
 
@@ -194,8 +194,17 @@ radial-gradient(ellipse at bottom right, rgb(255, 58, 36), transparent);
 }
 
 #rainfall:has(> .raining) {
-    background-image: radial-gradient(ellipse at top right, rgb(90, 112, 106), transparent), 
-    radial-gradient(ellipse at bottom left, rgb(84, 94, 99), transparent);
+    background-image: radial-gradient(ellipse at right, rgb(90, 112, 106), transparent), 
+    radial-gradient(ellipse at bottom left, rgb(84, 94, 99), white);
+}
+#rainfall:has(> .alert) {
+    background-image: radial-gradient(ellipse at right, rgb(254, 203, 73), transparent), 
+    radial-gradient(ellipse at bottom left, rgb(227, 129, 129), white);
+}
+
+.alert {
+    color: white;
+    padding: 0 1rem 1rem;
 }
 
 

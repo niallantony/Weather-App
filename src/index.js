@@ -171,8 +171,23 @@ export const screenController = (() => {
         frame.appendChild(iconFrame);
         frame.appendChild(infoFrame);
         const umbrellaIcon = './src/images/rainy.svg';
+        const warningIcon = './src/images/redwarning.svg';
         const todaysWeather = weatherValuesDay(currentData.forecast.forecastday[0]);
         let rainStart = 0;
+        const alerts = currentData.alerts.alert
+        console.log(alerts);
+        if (alerts.length) {
+            const alertText = `${alerts[0].event}`;
+            const alertFrame = document.createElement('div');
+            console.log(alertText);
+            alertFrame.innerHTML = `<em>${alertText}</em>`
+            alertFrame.classList.add('alert');
+            frame.appendChild(alertFrame);
+            const warning = document.createElement('img');
+            warning.src = warningIcon;
+            iconFrame.appendChild(warning);
+
+        }
         if (todaysWeather.willRain) {
             const hourlyValues = currentData.forecast.forecastday[0].hour;
             for (let i = curTime ; i < 24 ; i++) {
@@ -184,7 +199,6 @@ export const screenController = (() => {
         }
         if (!rainStart) {
             infoFrame.textContent = "No forecast rain today.";
-            return;
         }
         if (rainStart) {
             infoFrame.classList.add('raining');
@@ -192,11 +206,13 @@ export const screenController = (() => {
             umbrella.src = umbrellaIcon;
             iconFrame.appendChild(umbrella);
         };
-        if (rainStart === curTime) {
+        if (rainStart === curTime && rainStart) {
             infoFrame.textContent = "Currently forecast rain.";
-        } else {
+        } else if (rainStart) {
             infoFrame.textContent = `Forecast rain at ${rainStart}:00.`;
         }
+
+
     }
 
     initialLoad()
