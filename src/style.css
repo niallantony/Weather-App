@@ -139,11 +139,17 @@ p {
     position: relative;
 }
 
-.icon-frame img {
+.icon-frame img:first-child {
     position: absolute;
     height: 100%;
     filter: invert(100%);
     left: -30%;
+}
+.icon-frame img:nth-child(2){
+    position: absolute;
+    height: 100%;
+    filter: invert(100%);
+    left: 50%;
 }
 
 .info-frame {
