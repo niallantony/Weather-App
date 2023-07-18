@@ -1,1 +1,384 @@
+/* reel css */
+:root {
+    --background: white ;
+    --text: black;
+    --nav-current:gray;
+    --hover:blue ;
+}
+.image-carousel {
+    display:flex;
+    align-items: center;
+}
+
+#carousel {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#button-left {
+    left: -2rem;
+    
+}
+#button-left img {
+    left: -1px;
+    filter: invert(100%) brightness(103%);
+}
+#button-right img {
+    filter: invert(100%) brightness(103%);
+    right: -2px;
+}
+#button-right {
+    right: -2rem;
+}
+
+.reel {
+    display: flex;
+    transition: left 2s;
+    height: 100%;
+}
+
+.reel-element {
+    background-color: aqua;
+    height: 100%;
+}
+
+.carousel-button {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 1rem;
+    color: var(--hover);
+    position:absolute;
+    padding: 0;
+    margin: 1rem;
+    top:40%;
+    z-index: 2;
+    background-color: rgba(0,0,0,0.5);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.carousel-button img {
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+
+.carousel-button:active {
+    filter: brightness(140%);
+}
+
+.carousel-navigation {
+    width:.8rem;
+    height: .8rem;
+    border-radius: 1rem;
+    border: 0;
+    background-color: var(--background);
+    margin: 0 .5rem;
+    box-sizing: border-box;
+    padding: .5rem;
+    border: 1px solid gray;
+}
+
+
+.carousel-navigation.current {
+    background-color: var(--nav-current);
+    border: 1px solid var(--background);
+}
+
+.frame {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+    overflow: hidden;
+
+}
+@keyframes shake {
+    0% { transform: translate(2px, 1px) rotate(0deg); } 
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    30% { transform: translate(0px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(2px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(2px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+:root {
+    --selected: #C8C8DD;
+}
+
+#search {
+    background-color: white;
+    /* background-image: linear-gradient(to bottom right , #dae0f3 , #ffeaf1); */
+    border-radius: 3rem;
+    height: 5rem;
+    width: 5rem;
+    margin-top: 3vh;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+    transition: all 1s;
+}
+
+#search.searchbar-visible {
+    width: clamp(300px, 400px, 40%);
+    background-color: #C8D4F9
+}
+
+.search-button {
+    background-color: transparent;
+    margin: 0 1rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    border-radius: 2rem;
+}
+
+.search-button:focus {
+    border:0;
+}
+
+#search input {
+    margin: 0 2rem 0 0;
+    width: 70%;
+    height: 2rem;
+    border-radius: 2rem;
+    border:0;
+    background-color: white;
+    padding: .5rem 0;
+}
+
+
+#search .full-open {
+    padding:.5rem 2rem;
+}
+
+
+#search input::placeholder {
+    color: gray;
+}
+
+#search.error {
+    animation-name: shake;
+    animation-duration: 0.5s;
+    transform-origin: 50% 50%;
+    animation-iteration-count: infinite;
+}
+
+:root {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    --yellow : #ffdd00;
+}
+
+html,body {
+    margin:0;
+    padding:0;
+}
+
+.page {
+    display:flex;
+    flex-direction: column;
+    /* width: 100%; */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-image: linear-gradient(to bottom right , #dae0f3 , #ffeaf1);
+}
+
+#container {
+    font-size: 1rem;
+    position: relative;
+    flex: 0 0 auto;
+    display:flex;
+    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 2rem 3rem;
+    border-radius: 1rem;
+    background-color: #FEFEFE;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    width: clamp(40%, 400px,80%);
+    height: min(65%,30rem);
+    justify-content: flex-end;
+    align-items: baseline;
+}
+.condition {
+    color: gray; 
+}
+
+button {
+    margin: 1rem;
+    background-color: #FEBC12;
+    font-size: 2rem;
+    color: #FEFEFE;
+    border: 0;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+img {
+    width:auto;
+}
+
+
+button:active {
+    filter: brightness(90%);
+    transform: scale(98%);
+}
+
+#front {
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    background-color: #FFF;
+}
+
+#front h3 {
+    margin-top: 1rem;
+}
+
+.chip-info p {
+    display: flex;
+    align-items: end;
+    height:fit-content;
+}
+
+#front .chip-info p img {
+    width:auto;
+    height: 24px;
+    margin-right: 0;
+    filter: invert(40%) brightness(150%);
+}
+
+#front img {
+    height: 64px;
+    margin-right: 1rem;
+}
+
+.weather-chip {
+    display: flex;
+    border-bottom: 1px solid gray;
+    padding-bottom: 1rem;
+    align-items: center;
+}
+
+#front .weather-chip:last-of-type {
+    border-bottom: 0;
+}
+
+
+.chip-info {
+    width: 100%;
+    display: grid;
+    grid-template-rows: 2fr 1fr 2fr;
+    grid-template-columns: repeat(3,1fr);
+}
+
+
+h3,
+p {
+    margin:0;
+    padding:0;
+}
+
+.day, .chip-cond {
+    grid-column: 1 / 5;
+}
+
+.chip-info p {
+    flex: 0 0 auto;
+}
+
+#rainfall {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    background-image: radial-gradient(ellipse at right, rgb(125, 234, 205), transparent), 
+    radial-gradient(ellipse at top left, rgb(236, 239, 228), transparent);
+    box-sizing: border-box;
+    overflow:hidden;
+}
+
+.icon-frame {
+    flex: 1;
+    position: relative;
+}
+
+.icon-frame img {
+    position: absolute;
+    height: 100%;
+    filter: invert(100%);
+    left: -30%;
+}
+
+.info-frame {
+    padding: 1rem 1rem 1rem 0;
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    color: white;
+}
+
+#pollution {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    padding: 2rem 1rem;
+    box-sizing: border-box;
+    background-image: radial-gradient(ellipse at top right, rgb(149, 249, 219), transparent), 
+    radial-gradient(ellipse at bottom left, rgb(136, 220, 167), transparent);
+}
+
+.warning-text::before {
+    content: "Air Quality Index:";
+    color: rgba(255,255,255,0.7);
+    
+}
+
+.info-chip {
+    display:flex;
+    color: white;
+
+    /* filter: invert(85%) sepia(8%) saturate(7475%) hue-rotate(90deg) brightness(103%) contrast(100%); */
+}
+
+.info-chip img {
+    margin: 0 1rem;
+    filter: invert(100%);
+
+}
+
+#pollution:has(> .urgent) {
+    background-image: radial-gradient(ellipse at top right, rgba(235, 168, 144, 0.827), transparent), 
+radial-gradient(ellipse at bottom, rgb(255, 215, 36), transparent);
+}
+
+#pollution:has(> .super-urgent) {
+    background-image: radial-gradient(ellipse at top left, rgba(255, 108, 54, 0.827), transparent), 
+radial-gradient(ellipse at bottom right, rgb(255, 58, 36), transparent);
+}
+
+#rainfall:has(> .raining) {
+    background-image: radial-gradient(ellipse at right, rgb(90, 112, 106), transparent), 
+    radial-gradient(ellipse at bottom left, rgb(84, 94, 99), white);
+}
+#rainfall:has(> .alert) {
+    background-image: radial-gradient(ellipse at right, rgb(254, 203, 73), transparent), 
+    radial-gradient(ellipse at bottom left, rgb(227, 129, 129), white);
+}
+
+.alert {
+    color: white;
+    padding: 0 1rem 1rem;
+}
+
+
 
