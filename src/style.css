@@ -29,7 +29,6 @@ html,body {
     padding: 2rem 2rem 3rem;
     border-radius: 1rem;
     background-color: #FEFEFE;
-
     box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
     width: clamp(40%, 400px,80%);
     height: min(65%,30rem);
@@ -129,7 +128,8 @@ p {
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-image: radial-gradient(ellipse at right, rgb(125, 234, 205), transparent), 
+    radial-gradient(ellipse at top left, rgb(236, 239, 228), transparent);
     box-sizing: border-box;
     overflow:hidden;
 }
@@ -150,6 +150,7 @@ p {
     padding: 1rem 1rem 1rem 0;
     font-size: 1.5rem;
     margin: 0 1rem;
+    color: white;
 }
 
 #pollution {
@@ -159,11 +160,11 @@ p {
     justify-content: end;
     padding: 2rem 1rem;
     box-sizing: border-box;
-    background-image: radial-gradient(ellipse at top right, rgb(128, 211, 186), transparent), 
-    radial-gradient(ellipse at bottom left, rgb(113, 196, 186), transparent);
+    background-image: radial-gradient(ellipse at top right, rgb(149, 249, 219), transparent), 
+    radial-gradient(ellipse at bottom left, rgb(136, 220, 167), transparent);
 }
 
-#pollution::before {
+.warning-text::before {
     content: "Air Quality Index:";
     color: rgba(255,255,255,0.7);
     
@@ -190,6 +191,11 @@ radial-gradient(ellipse at bottom, rgb(255, 215, 36), transparent);
 #pollution:has(> .super-urgent) {
     background-image: radial-gradient(ellipse at top left, rgba(255, 108, 54, 0.827), transparent), 
 radial-gradient(ellipse at bottom right, rgb(255, 58, 36), transparent);
+}
+
+#rainfall:has(> .raining) {
+    background-image: radial-gradient(ellipse at top right, rgb(90, 112, 106), transparent), 
+    radial-gradient(ellipse at bottom left, rgb(84, 94, 99), transparent);
 }
 
 

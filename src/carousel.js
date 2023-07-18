@@ -22,7 +22,6 @@ export const carouselWheel = (id,images,w) => {
         const reelElements = reel.querySelectorAll('.reel-element');
         reelElements.forEach((element) => element.setAttribute('style',`width:${width}px`))
         correctPosition();
-        console.log(width);
     }
 
     const correctPosition = () => {
@@ -95,7 +94,6 @@ export const carouselWheel = (id,images,w) => {
     }
     
     const goTo = (imageRef) => {
-        console.log('Going to ', imageRef);
         reel.style.left = `${imageRef*width*-1}px`;
         changeNav();
         pauseCycle();
@@ -127,7 +125,6 @@ export const carouselWheel = (id,images,w) => {
     const pauseCycle = () => {
         if (!paused) {
             paused = true;
-            console.log('Pausing cycle...')
             clearInterval(cycle);
             setTimeout(startCycle,8000);
         }

@@ -6,14 +6,22 @@ export const weatherApi = (() => {
     const  getForecastAtIP = async () =>  {
         const apiRequest = await fetch("https://api.weatherapi.com/v1/forecast.json?key=c1a9b3173a4b44c68e413037231307&q=auto:ip&days=3&aqi=yes&alerts=yes")
         forecastData.ip = await apiRequest.json();
-        console.log('Made :',forecastData.ip);
+    }
+
+    const getForecastAtSearch = async (input) => {
+        const apiRequest = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=c1a9b3173a4b44c68e413037231307&q=${input}&days=3&aqi=yes&alerts=yes`)
+        const searchResult = await apiRequest.json();
+        if (searchResult.error) {
+            throw new Error('Api Error');
+        } else {
+            forecastData[input] = searchResult;
+        }
     }
 
 
     const getForecast = (request) => {
         return new Promise(function(resolve, reject){
             if(!forecastData[request]) {
-                console.log(request);
                 reject(new Error('No such data exists!'))
             } else {
                 resolve(forecastData[request]);
@@ -22,6 +30,7 @@ export const weatherApi = (() => {
     };
 
     return {
+        getForecastAtSearch,
         getForecastAtIP,
         getForecast,
     }

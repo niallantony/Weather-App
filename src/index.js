@@ -3,18 +3,22 @@ import { weatherApi } from "./weatherApi.js";
 import { carouselWheel } from "./carousel.js";
 import { searchButton } from "./search.js"; 
 
-const screenController = (() => {
+export const screenController = (() => {
     const container = document.getElementById('container');
     const locationDiv = container.querySelector('.location');
     const conditionDiv = container.querySelector('.condition');
     const weatherImage = container.querySelector('img');
     const carousel = document.getElementById('carousel');
+    const carouselIds = ['front','rainfall','pollution'];
     let currentData = {};
 
     const populatePage = (data) => {
         locationDiv.textContent = data.location.name + ' : ' + data.location.country;
         conditionDiv.textContent = data.current.condition.text;
         weatherImage.src = data.current.condition.icon;
+    }
+
+    const refeshData = (data) => {
         currentData = Object.assign({},data);
         console.log("Saved Data : ", currentData);
     }
@@ -23,8 +27,28 @@ const screenController = (() => {
         await weatherApi.getForecastAtIP()
         const forecast = await weatherApi.getForecast("ip")
         .catch(err => console.log(err));
-
         populatePage(forecast);
+        refeshData(forecast);
+    }
+
+    const newLoad = (data) => {
+        console.log('Now handling data for: ', data.location.name);
+        refreshPage();
+        populatePage(data);
+        refeshData(data);
+        forecastFrame();
+        rainFrame();
+        airQualityFrame();
+    }
+
+    const refreshPage = () => {
+        locationDiv.innerHTML = '';
+        conditionDiv.innerHTML = '';
+        weatherImage.src = '#';
+        carouselIds.forEach((id) => {
+            const carElement = document.getElementById(id);
+            carElement.innerHTML = '';
+        })
     }
 
     const getTime = (data) => {
@@ -48,7 +72,6 @@ const screenController = (() => {
     
     const weatherValuesHour = (day, input) => {
         const weather = {};
-        console.log(day,input)
         weather.icon = day.hour[input].condition.icon;
         weather.text = day.hour[input].condition.text;
         weather.chanceOfRain = day.hour[input].chance_of_rain
@@ -164,7 +187,7 @@ const screenController = (() => {
             return;
         }
         if (rainStart) {
-            frame.classList.add('raining');
+            infoFrame.classList.add('raining');
             const umbrella = document.createElement("img");
             umbrella.src = umbrellaIcon;
             iconFrame.appendChild(umbrella);
@@ -182,4 +205,8 @@ const screenController = (() => {
     .then(airQualityFrame);
     searchButton('search');
     carouselWheel("carousel",["front","rainfall","pollution"],carousel.offsetWidth);
+
+    return {
+        newLoad
+    }
 })()
