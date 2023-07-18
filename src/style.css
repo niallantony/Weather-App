@@ -30,7 +30,7 @@ html,body {
     border-radius: 1rem;
     background-color: #FEFEFE;
     box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
-    width: clamp(40%, 400px,80%);
+    width: clamp(30%, 400px,80%);
     height: min(65%,30rem);
     justify-content: flex-end;
     align-items: baseline;
